@@ -1,9 +1,9 @@
-import React, { Component } from "react"
+import React from "react"
 import '../Header/Header.scss'
 
 export const Header = props => {
   return (
-    <div>Feather</div>
+    <h1 className="header">Feather</h1>
   )
 }
 export default Header;
