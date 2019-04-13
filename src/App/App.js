@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { Header } from '../Header/Header'
-// import { connect } from 'react-redux'
+import { Header } from '../Header/Header';
+import  CardContainer  from '../CardContainer/CardContainer'
+import { connect } from 'react-redux';
+import { addLocations } from '../Actions'
+import { addWeather } from '../Actions'
 import { APIkey } from '../Utils/APIkey'
 import { fetchData } from '../Utils/API'
 import './App.scss';
@@ -15,39 +18,29 @@ export class App extends Component {
   }
   componentDidMount( ){
     this.fetchBackendData();
-    // this.fetchWeatherData()
   }
 
   fetchBackendData = async () => {
     const url = "http://localhost:3000/api/v1/locations"
     const response = await fetchData(url)
-    await this.setState({
-      backEndList: response
-    })
+    await this.props.addLocations(response)
   }
 
-  // fetchWeatherData = async () => {
-  //   const lat = Object.values(this.state.locationList[0])[0][0]
-  //   const long = Object.values(this.state.locationList[0])[0][1]
-  //   const url = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${APIkey}/${lat},${long}`
-  //   try {
-  //     const response = await fetchData(url);
-  //   } catch(error){
-  //   } 
-  // }
-
-  displayBackEnd = () => {
-    console.log('fired')
-    // const locationCard = this.state.backEndList.forEach((location, index) => {
-    //   console.log(location)
-    // })
-    // return locationCard
+  fetchWeatherData = async () => {
+    try {
+      const result = await Promise.all(this.props.locations.map( async (location) => {
+        let lat = location.lat;
+        let long = location.long;
+        const url = `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${APIkey}/${lat},${long}`
+        return await fetchData(url)}))
+        this.props.addWeather(result)
+    } catch(error){
+    } 
   }
-
-
 
   render() {
-    if(this.state.backEndList.length === 0){
+    this.fetchWeatherData()
+    if(this.props.locations.length === 0){
       return(
         <div>Loading</div>
       )
@@ -55,18 +48,25 @@ export class App extends Component {
       return (
         <div className="App">
           <Header/>
-          <ul>{this.state.backEndList.map(location => {
-            return  <li>{location.ficName + '-' + location.realName}</li>
-          })}</ul>
+          <CardContainer/>
         </div>
       );
     }
   }
 }
 
-export default App
+export const mapStateToProps = state => ({
+  locations: state.locations,
+  weather: state.weather
+});
 
-// export default connect(
-//   null,
-//   null
-// )(App);
+export const mapDispatchToProps = dispatch => ({
+  addLocations: locations => dispatch(addLocations(locations)),
+  addWeather: weatherLocals => dispatch(addWeather(weatherLocals))
+})
+
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
