@@ -9,12 +9,8 @@ import { fetchData } from '../Utils/API'
 import './App.scss';
 
 export class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      locationList: [{Metropolis: [40.7128,-74.0060]},{Wakanda: [4.8594,31.5713]},{Hogwarts: [57.4216, 4.6656]}],
-      backEndList: []
-    }
+  constructor () {
+    super()
   }
   componentDidMount( ){
     this.fetchBackendData();
@@ -24,6 +20,7 @@ export class App extends Component {
     const url = "http://localhost:3000/api/v1/locations"
     const response = await fetchData(url)
     await this.props.addLocations(response)
+    this.fetchWeatherData()
   }
 
   fetchWeatherData = async () => {
@@ -39,12 +36,6 @@ export class App extends Component {
   }
 
   render() {
-    this.fetchWeatherData()
-    if(this.props.locations.length === 0){
-      return(
-        <div>Loading</div>
-      )
-    }else{
       return (
         <div className="App">
           <Header/>
@@ -53,7 +44,7 @@ export class App extends Component {
       );
     }
   }
-}
+
 
 export const mapStateToProps = state => ({
   locations: state.locations,
