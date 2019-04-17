@@ -1,9 +1,12 @@
 import React from "react"
 import '../Header/Header.scss'
 
-export const Header = props => {
+export const Header = () => {
   return (
-    <h1 className="header">Feather</h1>
+    <div>
+      <h1 className="header">Feather</h1>
+      <h3>A weather application for the lands of your dreams.</h3>
+    </div>
   )
 }
 export default Header;

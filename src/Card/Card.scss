@@ -1,4 +1,11 @@
 .place-card {
   width: 400px;
-  height: 400px;
+    background: darkseagreen;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    border-radius: 5px;
+    margin: 20px;
 }
