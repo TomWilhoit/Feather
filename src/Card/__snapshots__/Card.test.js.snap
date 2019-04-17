@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card should match the snapshot with all data passed in 1`] = `
+<a
+  className="place-card"
+  value={0}
+>
+  <h2>
+    Chattavegas
+  </h2>
+  <h1>
+    56.61
+     F
+  </h1>
+  <h4>
+    It is raining sideways
+  </h4>
+  <h5>
+    Inspiration: 
+    Chattanooga
+  </h5>
+</a>
+`;
+
+exports[`Card should match the snapshot with all data passed in 2`] = `
+<div>
+  Loading
+</div>
+`;

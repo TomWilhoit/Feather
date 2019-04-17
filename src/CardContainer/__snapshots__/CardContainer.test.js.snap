@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardContainer should match the snapshot with all data passed in 1`] = `
+<div
+  className="card-cont"
+>
+  <Link
+    key="0"
+    to="/undefined"
+  >
+    <ConnectFunction
+      index={0}
+      key="0"
+      place="Chattanooga"
+      toggleDisplay={[Function]}
+    />
+  </Link>
+  <Link
+    key="1"
+    to="/undefined"
+  >
+    <ConnectFunction
+      index={1}
+      key="1"
+      place="Memphis"
+      toggleDisplay={[Function]}
+    />
+  </Link>
+</div>
+`;

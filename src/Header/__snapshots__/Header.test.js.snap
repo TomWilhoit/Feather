@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should match the snapshot with all data passed in correctly 1`] = `
+<div>
+  <h1
+    className="header"
+  >
+    Feather
+  </h1>
+  <h3>
+    A weather application for the lands of your dreams.
+  </h3>
+</div>
+`;
