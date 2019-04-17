@@ -9,9 +9,9 @@ Once server is running locally, clone and run this repo.
 A weather application that matches the real-world inspiration for sci-fi and fantasy locations, pulls weather data from the DarkSky API, and displays that information for the user. What's the weather in Gotham, the rainfall in King's Landing, or the forecast for Jurassic Park? Let Feather show you!
 
 ### Technologies ###
-React/Redux
-Node/Express
-Router
+React/Redux,
+Node/Express,
+Router,
 DarkSky API
 
 ### Main Screen ###
